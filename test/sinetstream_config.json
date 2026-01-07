@@ -1,0 +1,16 @@
+{
+  "header": {
+    "version": 2
+  },
+  "config": {
+    "raspipicow": {
+      "type": "mqtt",
+      "brokers": "mqtt_broker:1883",
+      "topic": "test",
+      "consistency": "AT_MOST_ONCE",
+      "value_type": "text",
+      "mqtt": {
+      }
+    }
+  }
+}

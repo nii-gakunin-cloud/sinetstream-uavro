@@ -1,0 +1,33 @@
+services:
+    mqtt_broker:
+        image: eclipse-mosquitto
+        expose:
+            - 1883
+        volumes:
+            - ./mosquitto/config:/mosquitto/config
+        networks:
+            - test-net
+        healthcheck:
+            test: ["CMD-SHELL", "nc -z localhost 1883 || exit 1"]
+            start_period: 1s
+            interval: 1000s
+            timeout: 10s
+            retries: 5
+    test:
+        #image: sinetstream-upython-test
+        build: .
+        volumes:
+            - ..:/sinetstream-upython
+        networks:
+            - test-net
+        command: sh -c 'cd test && cp sinetstream_config.json /sinetstream_config.json && ./run-test.sh'
+        #tty: true
+        #command: bash
+        working_dir: /sinetstream-upython
+        depends_on:
+            mqtt_broker:
+                condition: service_healthy
+networks:
+    test-net:
+
+# ../plugins/broker/kafka/tests/docker_kafka/docker-compose.yml
