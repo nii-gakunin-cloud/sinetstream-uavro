@@ -1,0 +1,10 @@
+{
+  "urls": [
+    [ "uavro/timezones.mpy", "img/lib/uavro/timezones.mpy" ],
+    [ "uavro/errors.mpy", "img/lib/uavro/errors.mpy" ],
+    [ "uavro/io.mpy", "img/lib/uavro/io.mpy" ]
+  ],
+  "deps": [
+  ],
+  "version": "1.10"
+}
